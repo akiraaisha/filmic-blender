@@ -1,10 +1,13 @@
-# Filmlike Dynamic Range LUT configuration for
-# Blender. Crafted by Troy James Sobotka with
+# Filmlike Dynamic Range LUT configuration.
+# Crafted by Troy James Sobotka with
 # special thanks and feedback from Guillermo
 # Espertino, Claudio Rocha, Bassam Kurdali, Eugenio
 # Pignataro, Henri Hebeisen, Jason Clarke,
 # Haarm-Peter Duiker, Thomas Mansencal, and Timothy
 # Lottes.
+
+# Modified by Maxime Roz to support more software that doesn't support OCIO Looks.
+# This version works with NUKE and Houdini.
 
 ocio_profile_version: 1
 
@@ -27,12 +30,13 @@ roles:
   matte_paint: Filmic Log Encoding
 
 displays:
-  sRGB / BT.709:
+  sRGB_BT.709:
     - !<View> {name: sRGB EOTF, colorspace: sRGB EOTF}
     - !<View> {name: BT.1886 EOTF, colorspace: BT.1886 EOTF}
     - !<View> {name: Non-Colour Data, colorspace: Non-Colour Data}
     - !<View> {name: Linear Raw, colorspace: Linear}
     - !<View> {name: Filmic Log Encoding Base, colorspace: Filmic Log Encoding}
+# Comment or uncomment those views if your software support or doesn't support looks.
     - !<View> {name: Filmic Very High Contrast, colorspace: Filmic Log Encoding, look: +Very High Contrast}
     - !<View> {name: Filmic High Contrast, colorspace: Filmic Log Encoding, look: +High Contrast}
     - !<View> {name: Filmic Medium High Contrast, colorspace: Filmic Log Encoding, look: +Medium High Contrast}
@@ -46,7 +50,7 @@ displays:
   None:
     - !<View> {name: No View, colorspace: Non-Colour Data}
 
-active_displays: [sRGB / BT.709, None]
+active_displays: [sRGB_BT.709, None]
 #active_views: [Filmic Log Encoding Base, sRGB EOTF, Non-Colour Data, Linear Raw, No View]
 
 colorspaces:
